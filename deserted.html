@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deserted — Unblocked Games</title>
+    <meta name="description" content="Deserted Education for all ages" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: '#1a1008',
+              fg: '#f7ecdc',
+              muted: '#c2a583',
+              primary: '#e8a13c',
+              accent: '#d96c3f',
+              card: 'rgba(60, 38, 20, 0.55)',
+              border: 'rgba(250, 225, 190, 0.16)'
+            },
+            fontFamily: {
+              display: ['"Rubik Spray Paint"', 'system-ui', 'sans-serif'],
+              sans: ['"Space Grotesk"', 'system-ui', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: theme('colors.bg');
+        color: theme('colors.fg');
+        font-family: theme('fontFamily.sans');
+      }
+      .road-bg {
+        background:
+          radial-gradient(70% 40% at 50% 58%, rgba(255, 186, 90, 0.35) 0%, transparent 60%),
+          radial-gradient(28% 14% at 50% 56%, rgba(255, 214, 130, 0.75) 0%, transparent 70%),
+          radial-gradient(120% 40% at 20% 100%, #4a2c14 0%, transparent 60%),
+          radial-gradient(120% 45% at 85% 100%, #633a19 0%, transparent 60%),
+          linear-gradient(
+            180deg,
+            #2a1a3a 0%,
+            #5c2f3a 26%,
+            #a35434 44%,
+            #d98b45 55%,
+            #8a5227 62%,
+            #4a2c14 78%,
+            #24150a 100%
+          );
+        animation: drift 24s ease-in-out infinite alternate;
+      }
+
+      .road-veil {
+        background: linear-gradient(
+          180deg,
+          rgba(42, 26, 12, 0.25) 0%,
+          rgba(30, 18, 9, 0.6) 55%,
+          rgba(20, 12, 6, 0.92) 100%
+        );
+      }
+
+      .flicker-anim {
+        animation: flicker 2s ease-in-out infinite;
+      }
+
+      .spray {
+        font-family: theme('fontFamily.display');
+        text-transform: lowercase;
+        letter-spacing: 0.06em;
+        color: theme('colors.primary');
+        text-shadow: 3px 5px 18px rgba(0, 0, 0, 0.75);
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      @keyframes drift {
+        from { transform: translate3d(0, 0, 0) scale(1.08); }
+        to   { transform: translate3d(0, -2.5%, 0) scale(1.16); }
+      }
+
+      @keyframes flicker {
+        0%, 42%, 48%, 65%, 100% { opacity: 1; }
+        45% { opacity: 0.35; }
+        62% { opacity: 0.55; }
+      }
+      
+      .screen { display: none; }
+      .screen.active { display: block; }
+    </style>
+</head>
+<body>
+  
+  <main id="home" class="screen active">
+    <div class="relative min-h-screen flex items-center justify-center p-6 overflow-hidden text-center">
+      <div class="absolute inset-0 road-bg pointer-events-none"></div>
+      <div class="absolute inset-0 road-veil pointer-events-none"></div>
+      <div class="relative z-10 flex flex-col items-center">
+        <p class="text-[0.7rem] tracking-[0.5em] lowercase text-muted m-0"><b>in tundra network discord type your name in there for a shoutout here</b></p>
+        <h1 class="spray text-[clamp(3.5rem,18vw,11rem)] leading-[0.9] mt-6 flicker-anim" style="color: salmon;">Deserted</h1>
+        <p class="max-w-[28rem] mt-6 text-muted text-[0.95rem] leading-[1.6]">
+          shoutout to yeth, lolration and velcro they're awesome
+        </p>
+        <button onclick="goto('games')" class="mt-10 px-9 py-4 rounded-full border border-primary/60 bg-primary/15 text-primary font-display text-[1.05rem] tracking-[0.15em] uppercase cursor-pointer shadow-[0_0_40px_rgba(232,161,60,0.4)] transition-all hover:bg-primary hover:text-bg">
+          <span style="color:pink">Open Games?</span>
+        </button>
+      </div>
+    </div>
+  </main>
+  
+  <main id="games" class="screen min-h-screen bg-bg p-6 sm:p-10 relative z-10">
+    <div class="max-w-7xl w-full mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <button onclick="goto('home')" class="bg-transparent border-0 p-0 text-muted font-sans text-[0.7rem] tracking-[0.35em] uppercase cursor-pointer transition-colors hover:text-primary flex items-center gap-2">
+          <mat-icon class="text-[1rem]"><p style=color:pink>back?</mat-icon
+        </button>
+        
+        <button onclick="goto('lumin')" class="px-4 py-2 rounded-xl border border-primary bg-primary/20 text-primary font-bold text-sm cursor-pointer hover:bg-primary hover:text-bg transition-colors flex items-center gap-2">
+            <mat-icon></mat-icon><p style=color:pink>lumin game library
+        </button> 
+      </div>
+      
+      <h1 class="spray text-[clamp(2.5rem,10vw,5rem)] leading-none mt-3 mb-2" style="color: white;"><b>gn math and ugs saved ubg lowk</b></h1>
+      <p class="text-muted text-sm max-w-xl mb-8">aura?</p>
+
+      <div id="player-container" class="hidden mb-8 border border-border rounded-3xl overflow-hidden bg-black relative shadow-[0_0_40px_rgba(232,161,60,0.2)]">
+          <div class="flex items-center justify-between p-4 bg-card border-b border-border">
+              <span class="font-display text-primary uppercase text-lg tracking-widest">Now Playing</span>
+              <div class="flex items-center gap-2">
+                  <button id="fullscreen-btn" class="text-xs font-bold px-3 py-1.5 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-bg transition-colors cursor-pointer flex items-center gap-1">
+                      <mat-icon class="text-[1rem]">fullscreen</mat-icon> 
+                  </button>
+                  <button onclick="closeGame()" class="text-muted hover:text-primary cursor-pointer flex items-center justify-center p-2 rounded-full hover:bg-white/5 transition-colors border-0 bg-transparent">
+                      <mat-icon>close</mat-icon>
+                  </button>
+              </div>
+          </div>
+          <iframe id="game-frame" class="w-full aspect-[16/9] border-0" allowfullscreen></iframe>
+      </div>
+
+      
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-4 mb-6 p-3 rounded-2xl bg-card border border-border backdrop-blur-md">
+        <div class="flex items-center gap-2 shrink-0">
+            <span class="text-xs font-bold text-muted hidden sm:inline">useless tags</span>
+            <select id="sort-select" onchange="renderGames()" class="bg-bg text-muted text-xs font-bold py-2 px-3 rounded-xl border border-border focus:outline-none focus:border-primary cursor-pointer">
+                <option value="popular">Most Popular</option>
+                <option value="rating">Highest Rated</option>hi btw some games might only load in fullscreen
+                <option value="alphabetical">A-Z</option>
+                <option value="newest">if you see js wanna say that paper.io only works in fullscreen</option>
+            </select>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div id="games-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 auto-rows-[120px] sm:auto-rows-[160px] grid-flow-row-dense">
+          <!-- Games injected here -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Lumin SDK Games Section -->
+  <main id="lumin" class="screen min-h-screen bg-bg p-6 sm:p-10 relative z-10">
+      <div class="max-w-7xl w-full mx-auto">
+        <button onclick="goto('games')" class="bg-transparent border-0 p-0 text-muted font-sans text-[0.7rem] tracking-[0.35em] uppercase cursor-pointer transition-colors hover:text-primary mb-6 flex items-center gap-2">
+            <mat-icon </mat-icon> Back to Games
+        </button>
+
+        <h1 class="spray text-[clamp(2.5rem,10vw,5rem)] leading-none mt-3 mb-2" style="color: white;"><b>LuminSDK Games</b></h1>
+        <p class="text-muted text-sm max-w-xl mb-8">so awesome</p>
+
+        <!-- Lumin stuff  -->
+        <div id="lumin-games" class="w-full min-h-[500px]"></div>
+      </div>
+  </main>
+
+  <script>
+      // IMPORTANT: shit i gott make sure every game object ends with a comma (,) "EXCEPT the very last one."" 
+    // Example: { name: "Game", ... }, <--- the comma MIGHT go there nah im js playin
+    const games = [
+       { name: "roblox", tag: "racing", url: "https://nowgg.fun/apps/a/19900/b.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-2", image: "https://cdn.imageurlgenerator.com/uploads/a3bc00b3-59ac-491c-a6fe-c7c98f208fe9.png" },{ name: "i dont even know what this is bro", tag: "racing", url: "https://rawcdn.githack.com/brickyosu/ugs-files-sorted/ad5667281e90e7b118ce6c35d2a423c3cb84a137/S/clskibididibidygyattohiorizzingallovertheplacestillwatermangotheoryfemboydrool.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1.5 row-span-1.5", image: "https://cdn.imageurlgenerator.com/uploads/af36fb1e-9585-46e8-9a1a-b94786ec400e.jpeg" },
+       { name: "slope 2", tag: "racing", url: "https://rawcdn.githack.com/brickyosu/ugs-files-sorted/ad5667281e90e7b118ce6c35d2a423c3cb84a137/S/clslope2player.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-2", image: "https://cdn.imageurlgenerator.com/uploads/19c98f45-f788-4a13-acc6-7a133f6986a9.jpeg" },
+       { name: "hole.io", tag: "racing", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/b2a89d6380ab9a325334a54c0bc79b8aa73f0caf/hole_io.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1.5 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/8a0bdf07-d0a6-4734-91d5-dd8e5509c624.jpeg" },
+      { name: "brotato", tag: "racing", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/74c155deab992859fa58da2f57715b69cc81f6e5/brotato.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1.5 row-span-1", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVWTRMhhlt36Hkedy9eAUCpxQOk-axcS8WVfZHS25WuEgp_pWM" },
+     { name: "Super Smash Bros N64", tag: "racing", url: "https://rawcdn.githack.com/brickyosu/ugs-files-sorted/ad5667281e90e7b118ce6c35d2a423c3cb84a137/S/clsupersmashbros.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-3 row-span-1.5", image: "https://cdn.discordapp.com/attachments/1389426800114925752/1536819020513153115/IMG_1712.jpeg?ex=6a7cc9bf&is=6a7b783f&hm=397f815e8702a51f1e25c4f9eab387ceae0fbbf917c0aacd16ffc7cb00b7d03f" },
+      { name: "Five Nights at Epsteins", tag: "racing", url: "https://fnae.n1yshi.dev", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1.5 row-span-1", image: "https://cdn.discordapp.com/attachments/1389426800114925752/1536821524487471187/IMG_1713.jpeg?ex=6a7ccc14&is=6a7b7a94&hm=1a50af048ddaa91ed4b3d81d309ebcba632c45b4bf659a51bf3f43c2e635fe85" },
+      { name: "Ultimate Game Stash", tag: "racing", url: "https://smithweik.weebly.com/5.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1.5 row-span-1", image: "https://cdn.discordapp.com/icons/1300950641115529266/18bb02f42c1450ff257fe1f4228a57ae.webp?size=2048" },
+      { name: "eaglercraft 1.5.2", tag: "racing", url: "https://rawcdn.githack.com/brickyosu/ugs-files-sorted/ad5667281e90e7b118ce6c35d2a423c3cb84a137/minecraft/eaglercraft.1.5.2.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1.5 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },{ name: "2D shooting", tag: "racing", url: "https://rawcdn.githack.com/ubg-py/the-game-stash/1b7678cb90fc69faf8ce731f82725971262abd19/2D%20shooting/2Dshooting.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-2", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },
+       { name: "drift hunters", tag: "racing", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/aec7f3db9981e1905e9c6c70500d8bae74eb1340/drift_hunters.html", rating: 4.8, popular: true, dateAdded: 2, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/9d1b0579-3107-4739-ae6f-cff2dbac56d0.jpeg" },
+       { name: "fih", tag: "shooting", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/548be0e6ff5e13e3c9f9dd7315908b43a96896fe/fih.html", rating: 4.9, popular: true, dateAdded: 3, span: "col-span-3 row-span-2", image: "https://cdn.discordapp.com/attachments/1389426800114925752/1536815291143553064/IMG_1711.jpeg?ex=6a7cc646&is=6a7b74c6&hm=dbbf5c7cecc8e95af487f3720e9ea940d2d8b4cfd6132088d386aa5862ee353f" },
+      { name: "half life", tag: "shooting", url: "https://hl2.slqnt.dev", rating: 4.9, popular: true, dateAdded: 3, span: "col-span-1 row-span-3", image: "https://cdn.imageurlgenerator.com/uploads/ca35440e-f46b-4197-a59c-3631d59cf60f.jpeg" },
+       { name: "1v1.lol 2", tag: "action", url: "https://igre.games/en/1v1-lol-reloaded/play/", rating: 4.9, popular: true, dateAdded: 9, span: "col-span-2 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },
+       { name: "1v1.lol", tag: "action", url: "https://rawcdn.githack.com/ubg-py/the-game-stash/1b7678cb90fc69faf8ce731f82725971262abd19/1v1lol/1v1lolv3.html", rating: 4.9, popular: true, dateAdded: 9, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/d806becc-6c6e-47cc-9c4c-4f7d5d535dba.jpeg" },
+       { name: "Retro Bowl", tag: "sports", url: "https://rawcdn.githack.com/lioxryt/lioxryt-assets/0cf7d107ddb99c99ea20387522aa29b8ee382049/other/retrobowl/index.html", rating: 4.8, popular: true, dateAdded: 10, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/179e8f25-9d46-44c5-ad6e-080783c830e9.jpeg" },
+       { name: "BitLife", tag: "rpg", url: "https://bitlifeonline.com", rating: 4.7, popular: true, dateAdded: 11, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },
+       { name: "Smash Karts", tag: "racing", url: "https://smashkarts.io", rating: 4.6, popular: true, dateAdded: 12, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/f3ac016a-86e6-450b-a98d-d9a1dc7e93eb.jpeg" },
+       { name: "Paper.io 3D", tag: "arcade", url: "https://paper-io.com", rating: 4.5, popular: true, dateAdded: 13, span: "col-span-2 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/f982dd5f-371b-4536-9458-0908dfc12055.jpeg" },
+       { name: "BasketBros", tag: "sports", url: "https://basketbros.io", rating: 4.6, popular: true, dateAdded: 14, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },
+       { name: "Shell Shockers", tag: "shooting", url: "https://shellshock.io", rating: 4.7, popular: true, dateAdded: 15, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },
+       { name: "Subway Surfers all cities", tag: "arcade", url: "https://rawcdn.githack.com/compatroopa769-dev/sscombination/1fa4dc17d8413363298cf663cb065737b3375532/index.html", rating: 4.8, popular: true, dateAdded: 16, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/9d19c98e-4070-48e1-9573-662a96ad36db.jpeg" },
+       { name: "60 Seconds Santa Run", tag: "arcade", url: "https://rawcdn.githack.com/ubg-py/the-game-stash/1b7678cb90fc69faf8ce731f82725971262abd19/cl60secondssantarun.html", rating: 4.8, popular: true, dateAdded: 16, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/95a161d0-c9ba-497b-bb04-89e8c25e0019.png" },
+       // Note there's NO comma on the very last item in the list!
+       { name: "rocketgoal.io", tag: "racing", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/c5f89c3d2fd314dec98fd9982b5a0d09da6f6d74/rocket_goal_io.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/b79a1880-a6e7-4d16-bd76-d0dac584bfe6.jpeg"},
+      { name: "1 2 mini battles", tag: "racing", url: "https://rawcdn.githack.com/ubg-py/the-game-stash/1b7678cb90fc69faf8ce731f82725971262abd19/1%202%20mini%20battles/12minibattles.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },
+      { name: "osu!", tag: "racing", url: "https://rawcdn.githack.com/frozenfinale/nebulilabs-os.github.io/3a4e4900c1288456078b2918aae8a0a87f60be62/g/closu.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/d5cef502-0522-4311-804b-0a1c7e7d5031.png" }
+    ];
+
+    let luminInitialized = false;
+
+    function goto(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(screenId).classList.add('active');
+        if (screenId === 'home' || screenId === 'lumin') closeGame();
+        if (screenId === 'games') renderGames();
+        if (screenId === 'lumin' && !luminInitialized) {
+            initLumin();
+        }
+    }
+
+    function initLumin() {
+        if (typeof Lumin !== 'undefined') {
+            Lumin.init({
+                container: '#lumin-games',
+                theme: 'dark',
+                onReady: () => console.log('LuminSDK is ready'),
+                onError: (err) => console.error('LuminSDK error:', err),
+            });
+            luminInitialized = true;
+        } else {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js';
+            script.onload = () => {
+                Lumin.init({
+                    container: '#lumin-games',
+                    theme: 'dark',
+                    onReady: () => console.log('LuminSDK is ready'),
+                    onError: (err) => console.error('LuminSDK error:', err),
+                });
+                luminInitialized = true;
+            };
+            document.body.appendChild(script);
+        }
+    }
+
+    function renderGames() {
+        const grid = document.getElementById('games-grid');
+        const sortVal = document.getElementById('sort-select').value;
+        
+        let filtered = [...games];
+
+        if (sortVal === 'popular') {
+            filtered.sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
+        } else if (sortVal === 'rating') {
+            filtered.sort((a, b) => b.rating - a.rating);
+        } else if (sortVal === 'alphabetical') {
+            filtered.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (sortVal === 'newest') {
+            filtered.sort((a, b) => b.dateAdded - a.dateAdded);
+        }
+
+        grid.innerHTML = filtered.map(game => {
+            const cursorClass = game.url 
+                ? 'cursor-pointer' 
+                : 'opacity-70 cursor-not-allowed';
+            const clickHandler = game.url ? `onclick="playGame('${game.url}')"` : '';
+            
+            return `
+            <div ${clickHandler} class="${game.span} ${cursorClass} group relative overflow-hidden rounded-2xl bg-card border border-border shadow-md transition-all hover:-translate-y-1 hover:border-primary hover:shadow-[0_0_20px_rgba(232,161,60,0.3)]">
+                <img src="${game.image}" alt="${game.name}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 pointer-events-none" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none"></div>
+                <h2 class="absolute bottom-3 left-4 right-4 font-display uppercase tracking-wide text-white text-lg sm:text-xl drop-shadow-md leading-tight pointer-events-none">${game.name}</h2>
+            </div>`;
+        }).join('');
+    }
+
+    function playGame(url) {
+        if (!url) return;
+        const container = document.getElementById('player-container');
+        const frame = document.getElementById('game-frame');
+        frame.src = url;
+        container.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function closeGame() {
+        const container = document.getElementById('player-container');
+        const frame = document.getElementById('game-frame');
+        frame.src = '';
+        container.classList.add('hidden');
+    }
+
+    function toggleFullscreen() {
+        const frame = document.getElementById('game-frame');
+        if (!document.fullscreenElement) {
+            frame.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable fullscreen: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    document.getElementById('fullscreen-btn').addEventListener('click', toggleFullscreen);
+
+    document.addEventListener('fullscreenchange', () => {
+        const btn = document.getElementById('fullscreen-btn');
+        if (document.fullscreenElement) {
+            btn.innerHTML = `<mat-icon class="text-[1rem]">fullscreen_exit</mat-icon> Exit`;
+        } else {
+            btn.innerHTML = `<mat-icon class="text-[1rem]">fullscreen</mat-icon> Fullscreen`;
+        }
+    });
+
+    // Initialize
+    renderGames();
+  </script>
+  <app-root style="display: none;"></app-root>
+</body>
+</html>
