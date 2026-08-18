@@ -138,10 +138,46 @@
         </div>
     </div>
 
+    <!-- Background Selector Modal -->
+    <div id="bg-selector-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 hidden opacity-0 transition-opacity duration-300" onclick="closeBgSelectorModal()">
+        <div class="bg-card border border-primary/40 rounded-3xl p-6 max-w-2xl w-[90%] text-center shadow-[0_0_40px_rgba(232,161,60,0.3)] backdrop-blur-md" onclick="event.stopPropagation()">
+            <mat-icon class="text-4xl text-primary mb-2">Change Background</mat-icon>
+            <h2 class="text-2xl font-bold text-fg mb-6">Select a Background</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+                <!-- Background Options -->
+                <button onclick="selectBackground(0)" class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all focus:border-primary group cursor-pointer shadow-md">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#2a1a3a] to-[#24150a]"></div>
+                    <span class="absolute inset-0 flex items-center justify-center text-xs font-bold text-white bg-black/40 group-hover:bg-black/20 transition-colors">Default</span>
+                </button>
+                <button onclick="selectBackground(1)" class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all focus:border-primary bg-cover bg-center group cursor-pointer shadow-md" style="background-image: url('https://cdn.imageurlgenerator.com/uploads/26839f29-01e5-4bf0-a785-3f21345a5091.jpeg')">
+                    <span class="absolute inset-0 flex items-center justify-center text-xs font-bold text-white bg-black/40 group-hover:bg-black/20 transition-colors opacity-0 group-hover:opacity-100">Select</span>
+                </button>
+                <button onclick="selectBackground(2)" class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all focus:border-primary bg-cover bg-center group cursor-pointer shadow-md" style="background-image: url('https://cdn.imageurlgenerator.com/uploads/b78b251a-b267-4eb5-bfe8-eabb7e5c1bf6.jpeg')">
+                    <span class="absolute inset-0 flex items-center justify-center text-xs font-bold text-white bg-black/40 group-hover:bg-black/20 transition-colors opacity-0 group-hover:opacity-100">Select</span>
+                </button>
+                <button onclick="selectBackground(3)" class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all focus:border-primary bg-cover bg-center group cursor-pointer shadow-md" style="background-image: url('https://cdn.imageurlgenerator.com/uploads/1c51c7da-9349-4742-b980-c277e7a9c7db.jpeg')">
+                    <span class="absolute inset-0 flex items-center justify-center text-xs font-bold text-white bg-black/40 group-hover:bg-black/20 transition-colors opacity-0 group-hover:opacity-100">Select</span>
+                </button>
+                <button onclick="selectBackground(4)" class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all focus:border-primary bg-cover bg-center group cursor-pointer shadow-md" style="background-image: url('https://www.image2url.com/r2/default/images/1787056019711-e8da0538-0c94-4557-988b-2790a9068fa0.jpeg')">
+                    <span class="absolute inset-0 flex items-center justify-center text-xs font-bold text-white bg-black/40 group-hover:bg-black/20 transition-colors opacity-0 group-hover:opacity-100">Select</span>
+                </button>
+                <button onclick="selectBackground(5)" class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all focus:border-primary bg-cover bg-center group cursor-pointer shadow-md" style="background-image: url('https://www.image2url.com/r2/default/images/1787058668996-34fc38d2-1073-4e39-bba7-773673d040ad.jpeg')">
+                    <span class="absolute inset-0 flex items-center justify-center text-xs font-bold text-white bg-black/40 group-hover:bg-black/20 transition-colors opacity-0 group-hover:opacity-100">Select</span>
+                  <button onclick="selectBackground(6)" class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all focus:border-primary bg-cover bg-center group cursor-pointer shadow-md" style="background-image: url('https://www.image2url.com/r2/default/images/1787066669535-4584cf4e-08eb-44ab-b5c6-32a7ada926d8.jpeg')">
+                    <span class="absolute inset-0 flex items-center justify-center text-xs font-bold text-white bg-black/40 group-hover:bg-black/20 transition-colors opacity-0 group-hover:opacity-100">Select</span>
+                </button>
+                </button>
+            </div>
+            <div class="flex justify-center">
+                <button onclick="closeBgSelectorModal()" class="px-6 py-2.5 rounded-xl border border-muted/50 text-muted hover:text-fg hover:bg-white/5 transition-colors text-sm font-bold cursor-pointer">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <div class="relative min-h-screen flex items-center justify-center p-6 overflow-hidden text-center">
       
-      <button onclick="cycleBackground()" class="absolute top-6 right-6 z-50 p-3 rounded-full bg-black/40 border border-white/10 text-white hover:bg-black/60 transition-colors backdrop-blur-md cursor-pointer flex items-center justify-center group" title="Change Background">
-          <mat-icon class="group-hover:rotate-180 transition-transform duration-500">Change Background?</mat-icon>
+      <button onclick="showBgSelectorModal()" class="absolute top-6 right-6 z-50 p-3 rounded-full bg-black/40 border border-white/10 text-white hover:bg-black/60 transition-colors backdrop-blur-md cursor-pointer flex items-center justify-center group" title="Change Background">
+          <mat-icon class="group-hover:rotate-180 transition-transform duration-500">wallpaper</mat-icon>
       </button>
 
       <div class="relative z-10 flex flex-col items-center">
@@ -251,8 +287,8 @@
     // IMPORTANT: Make sure every game object ends with a comma (,) EXCEPT the very last one. 
     const games = [
        { name: "roblox", tag: "racing", url: "https://nowgg.fun/apps/a/19900/b.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-2", image: "https://cdn.imageurlgenerator.com/uploads/a3bc00b3-59ac-491c-a6fe-c7c98f208fe9.png" },
-       { name: "i dont even know what this is bro", tag: "racing", url: "https://rawcdn.githack.com/brickyosu/ugs-files-sorted/ad5667281e90e7b118ce6c35d2a423c3cb84a137/S/clskibididibidygyattohiorizzingallovertheplacestillwatermangotheoryfemboydrool.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-2", image: "https://cdn.imageurlgenerator.com/uploads/af36fb1e-9585-46e8-9a1a-b94786ec400e.jpeg" },
-       { name: "just shapes and beats", tag: "racing", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/a4c8211821b81daf72d351201d7ae2749a794c37/just_shapes___beats.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-2", image: "https://www.image2url.com/r2/default/images/1786988735039-ea235f7e-631b-4b40-a1db-1dc61bed6ba2.jpeg" },
+       { name: "i dont even know what this is bro", tag: "racing", url: "https://rawcdn.githack.com/brickyosu/ugs-files-sorted/ad5667281e90e7b118ce6c35d2a423c3cb84a137/S/clskibididibidygyattohiorizzingallovertheplacestillwatermangotheoryfemboydrool.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/af36fb1e-9585-46e8-9a1a-b94786ec400e.jpeg" },
+       { name: "just shapes and beats", tag: "racing", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/a4c8211821b81daf72d351201d7ae2749a794c37/just_shapes___beats.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1 row-span-1", image: "https://www.image2url.com/r2/default/images/1786988735039-ea235f7e-631b-4b40-a1db-1dc61bed6ba2.jpeg" },
       { name: "slope 2", tag: "racing", url: "https://rawcdn.githack.com/brickyosu/ugs-files-sorted/ad5667281e90e7b118ce6c35d2a423c3cb84a137/S/clslope2player.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-2", image: "https://cdn.imageurlgenerator.com/uploads/19c98f45-f788-4a13-acc6-7a133f6986a9.jpeg" },
        { name: "hole.io", tag: "racing", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/b2a89d6380ab9a325334a54c0bc79b8aa73f0caf/hole_io.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/8a0bdf07-d0a6-4734-91d5-dd8e5509c624.jpeg" },
       { name: "brotato", tag: "racing", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/74c155deab992859fa58da2f57715b69cc81f6e5/brotato.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-1", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVWTRMhhlt36Hkedy9eAUCpxQOk-axcS8WVfZHS25WuEgp_pWM" },
@@ -261,7 +297,7 @@
       { name: "Ultimate Game Stash", tag: "racing", url: "https://smithweik.weebly.com/5.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-1", image: "https://cdn.discordapp.com/icons/1300950641115529266/18bb02f42c1450ff257fe1f4228a57ae.webp?size=2048" },
       { name: "eaglercraft 1.5.2", tag: "racing", url: "https://rawcdn.githack.com/brickyosu/ugs-files-sorted/ad5667281e90e7b118ce6c35d2a423c3cb84a137/minecraft/eaglercraft.1.5.2.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },
       { name: "factory balls", tag: "racing", url: "https://rawcdn.githack.com/brickyosu/ugs-files-sorted/ad5667281e90e7b118ce6c35d2a423c3cb84a137/F/clfactoryballs.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-2 row-span-2", image: "https://www.image2url.com/r2/default/images/1786989147697-d328269a-379b-4df5-8122-db9e8d57dd55.jpeg" },
-      { name: "bloodless", tag: "racing", url: "https://waddlegames.itch.io/bloodless", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1.5 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },
+      { name: "GO TO BED horror", tag: "racing", url: "https://rawcdn.githack.com/slqntdevss/GTBPort/8d307b2a2daf6accd1fcc7353564bf62ccca23c5/index.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1.5 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },
       { name: "2D shooting", tag: "racing", url: "https://rawcdn.githack.com/ubg-py/the-game-stash/1b7678cb90fc69faf8ce731f82725971262abd19/2D%20shooting/2Dshooting.html", rating: 4.5, popular: true, dateAdded: 1, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/ff493adf-aa82-47a5-a993-a0c8a699f87f.jpeg" },
        { name: "drift hunters", tag: "racing", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/aec7f3db9981e1905e9c6c70500d8bae74eb1340/drift_hunters.html", rating: 4.8, popular: true, dateAdded: 2, span: "col-span-1 row-span-1", image: "https://cdn.imageurlgenerator.com/uploads/9d1b0579-3107-4739-ae6f-cff2dbac56d0.jpeg" },
        { name: "fih", tag: "shooting", url: "https://rawcdn.githack.com/frozenfinale/paper.io-3d/548be0e6ff5e13e3c9f9dd7315908b43a96896fe/fih.html", rating: 4.9, popular: true, dateAdded: 3, span: "col-span-3 row-span-2", image: "https://cdn.discordapp.com/attachments/1389426800114925752/1536815291143553064/IMG_1711.jpeg?ex=6a7cc646&is=6a7b74c6&hm=dbbf5c7cecc8e95af487f3720e9ea940d2d8b4cfd6132088d386aa5862ee353f" },
@@ -289,7 +325,10 @@
         'default',
         'https://cdn.imageurlgenerator.com/uploads/26839f29-01e5-4bf0-a785-3f21345a5091.jpeg',
         'https://cdn.imageurlgenerator.com/uploads/b78b251a-b267-4eb5-bfe8-eabb7e5c1bf6.jpeg',
-        'https://cdn.imageurlgenerator.com/uploads/1c51c7da-9349-4742-b980-c277e7a9c7db.jpeg'
+        'https://cdn.imageurlgenerator.com/uploads/1c51c7da-9349-4742-b980-c277e7a9c7db.jpeg',
+        'https://www.image2url.com/r2/default/images/1787056019711-e8da0538-0c94-4557-988b-2790a9068fa0.jpeg',
+        'https://www.image2url.com/r2/default/images/1787058668996-34fc38d2-1073-4e39-bba7-773673d040ad.jpeg',
+      'https://www.image2url.com/r2/default/images/1787066669535-4584cf4e-08eb-44ab-b5c6-32a7ada926d8.jpeg'
     ];
     let currentHomeBgIndex = parseInt(localStorage.getItem('deserted_bg_index') || '0', 10);
     if (isNaN(currentHomeBgIndex) || currentHomeBgIndex >= homeBackgrounds.length) {
@@ -311,10 +350,24 @@
         }
     }
 
-    function cycleBackground() {
-        currentHomeBgIndex = (currentHomeBgIndex + 1) % homeBackgrounds.length;
+    function showBgSelectorModal() {
+        const modal = document.getElementById('bg-selector-modal');
+        modal.classList.remove('hidden');
+        void modal.offsetWidth; // force reflow
+        modal.classList.remove('opacity-0');
+    }
+
+    function closeBgSelectorModal() {
+        const modal = document.getElementById('bg-selector-modal');
+        modal.classList.add('opacity-0');
+        setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    function selectBackground(index) {
+        currentHomeBgIndex = index;
         localStorage.setItem('deserted_bg_index', currentHomeBgIndex.toString());
         applyBackground(currentHomeBgIndex);
+        closeBgSelectorModal();
     }
 
     function goto(screenId) {
@@ -347,7 +400,7 @@
     function openAboutBlank() {
         let win = window.open('about:blank', '_blank');
         if (!win) {
-            alert('Popup blocked! Please allow popups for this site.');
+            alert('ooo shi bro next to the url bar you might see a thing that says "popup blocked" i want you to click that and disable popup so about:blank works :)');
             return;
         }
         win.document.body.style.margin = '0';
